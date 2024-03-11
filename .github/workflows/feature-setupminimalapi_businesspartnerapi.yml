@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - businesspartnerapi
 on:
   push:
     branches:
-      - feature/setupminimalAPI
+      - feature/*
   workflow_dispatch:
 
 jobs:
