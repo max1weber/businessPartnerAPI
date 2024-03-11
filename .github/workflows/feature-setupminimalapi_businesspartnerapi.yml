@@ -32,7 +32,6 @@ jobs:
         uses: EasyDesk/action-dotnet-publish@v1.0.0
         with:
           path: ./OAuth2/OAuth2.csproj
-          output-dir: ./packages
           build-configuration: Release
           skip-build: true
           
