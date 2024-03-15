@@ -30,7 +30,7 @@ namespace OAuth2.Endpoints
             }).WithName("GetBusinessPartners");
 
             routeGroup.MapGet("/businesspartners/active", async (BusinessPartnerDb db) =>
-                await db.BusinessPartners.Where(t => t.IsActive).ToListAsync()).WithName("GetActiveBusinessPartners");
+                await db.BusinessPartners.Where(t => t.IsActive).ToListAsync()).WithName("GetActiveBusinessPartners").RequireAuthorization();
 
             routeGroup.MapGet("/businesspartners/{id}", async (Guid id, BusinessPartnerDb db) =>
                 await db.BusinessPartners.FindAsync(id)
@@ -45,7 +45,8 @@ namespace OAuth2.Endpoints
 
                 return Results.Created($"/businesspartners/{bp.Id}", bp);
             })
-            .WithName("CreateBusinessPartner");
+            .WithName("CreateBusinessPartner")
+            .RequireAuthorization();
 
             routeGroup.MapPut("/businesspartners/{id}", async (Guid id, BusinessPartner inputBusinessPartner, BusinessPartnerDb db) =>
             {
@@ -59,7 +60,9 @@ namespace OAuth2.Endpoints
                 await db.SaveChangesAsync();
 
                 return Results.NoContent();
-            }).WithName("UpdateBusinessPartners");
+            }).WithName("UpdateBusinessPartners")
+            .RequireAuthorization();
+;
 
             routeGroup.MapDelete("/businesspartners/{id}", async (Guid id, BusinessPartnerDb db) =>
             {
@@ -80,7 +83,9 @@ namespace OAuth2.Endpoints
 
                 return generatedOperation;
             })
-            .WithName("DeleteBusinessPartnersById");
+            .WithName("DeleteBusinessPartnersById")
+            .RequireAuthorization();
+
 
 
             routeGroup.MapGet("/", () => "Hello BusinessPartner!");
