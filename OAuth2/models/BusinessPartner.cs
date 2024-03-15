@@ -10,7 +10,7 @@ public class BusinessPartner
     public bool IsActive { get; set; } = false;
     public string Avatar { get;  set; } = string.Empty;
 
-    public BusinessPartner(string bpid) => BusinessPartnerId = bpid;
+    public BusinessPartner(string bpid) => BusinessPartnerId = $"BP{bpid}";
 
 
     public BusinessPartner()

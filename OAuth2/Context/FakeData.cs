@@ -20,7 +20,7 @@ static  class FakeData
             .RuleFor(p => p.Name, f=> f.Company.CompanyName() )
             .RuleFor(u => u.Avatar, f => f.Internet.Avatar())
             .RuleFor(p => p.Id, f=> Guid.NewGuid() )
-            .RuleFor(p=>p.BusinessPartnerId, f=> f.Company.CompanyName())
+          
             .RuleFor(p => p.dateTime, f=> f.Date.Past(1, DateTime.Now) )
             .RuleFor(p=>p.IsActive, f=> f.Random.Bool());
 
